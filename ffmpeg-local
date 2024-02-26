@@ -1,0 +1,15 @@
+ffmpeg -re -i 'rtsp://192.168.0.194:554/stream0' -vcodec copy -c:a aac -f flv 'rtmp://localhost:1935/stream/boon'
+
+
+ffmpeg -rtsp_transport tcp -i 'rtsp://192.168.0.194:554/stream0' -c:v libx265 -c:a aac -f mpegts -preset ultrafast -profile:v main -level 4.0 'rtmp://localhost:1935/stream/boon'
+
+ffmpeg -re -i 'rtsp://192.168.0.194:554/stream0' -c:v libx265 -c:a aac -f mpegts -preset ultrafast -profile:v main -level 4.0 'rtmp://localhost:1935/stream/boon'
+
+
+ffmpeg -rtsp_transport udp -i 'rtsp://192.168.0.194:554/stream0' -c:v libx265 -c:a aac -f flv 'rtmp://localhost:1935/stream/boon'
+
+ffmpeg -i rtmp://localhost/live/$name -c:v libx264 -preset veryfast -b:v 3000k -maxrate 3000k -bufsize 6000k -vf "scale=1280:-1" -c:a aac -b:a 128k -ac 2 -f flv rtmp://localhost/hls/$name;
+
+ffmpeg -rtsp_transport udp -i 'rtsp://192.168.0.105:554/stream0' -c:v libx264 -preset veryfast -b:v 3000k -maxrate 3000k -bufsize 6000k -vf "scale=1280:-1" -c:a aac -b:a 128k -ac 2 -f flv 'rtmp://localhost:1935/stream/boon'
+
+

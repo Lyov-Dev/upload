@@ -1,0 +1,7 @@
+hostname: boonbackup
+ip: 195.250.65.78
+login: boonadmin 
+password: PP%TZTK!32!t>A;k 
+ssh: default: 2267
+
+ssh boonadmin@195.250.65.78 -p 2267
